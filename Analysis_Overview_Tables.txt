@@ -1,0 +1,280 @@
+Sub Analysis_Overview_Tables()
+'
+' Analysis_Overview_Tables Macro
+'
+
+'
+    
+Dim ALLSpace As Worksheet
+Const ALLSheetName As String = "Analysis-Overview ALL"
+
+Set ALLSpace = Nothing
+On Error Resume Next
+Set ALLSpace = ActiveWorkbook.Worksheets(ALLSheetName)
+On Error GoTo 0
+
+    If ALLSpace Is Nothing Then
+        Worksheets.Add.Name = ALLSheetName
+    End If
+
+    Sheets.Add After:=Sheets(Sheets.Count)
+    Sheets("Analysis-Overview ALL").Select
+    Sheets("Analysis-Overview ALL").Name = "Analysis-Overview ALL"
+    Sheets("Analysis-Overview ALL").Select
+    Sheets("Analysis-Overview ALL").Move Before:=Sheets(1)
+    Range("A3").Select
+    ActiveCell.FormulaR1C1 = "Left Hemisphere"
+    Range("A4").Select
+    ActiveCell.FormulaR1C1 = "X coor"
+    Range("B4").Select
+    ActiveCell.FormulaR1C1 = "Y coor"
+    Range("C4").Select
+    ActiveCell.FormulaR1C1 = "Z coor "
+    Range("D4").Select
+    ActiveCell.FormulaR1C1 = "equivk"
+    Range("E4").Select
+    ActiveCell.FormulaR1C1 = "equivZ"
+    Range("F4").Select
+    ActiveCell.FormulaR1C1 = "BA"
+    Range("G4").Select
+    ActiveCell.FormulaR1C1 = "Structure"
+    Range("H4").Select
+    ActiveCell.FormulaR1C1 = "Lobe"
+    Range("I4").Select
+    ActiveCell.FormulaR1C1 = "Structure"
+    Range("J4").Select
+    ActiveCell.FormulaR1C1 = "BA"
+    Range("K4").Select
+    ActiveCell.FormulaR1C1 = "equivZ"
+    Range("L4").Select
+    ActiveCell.FormulaR1C1 = "equivk"
+    Range("M4").Select
+    ActiveCell.FormulaR1C1 = "X coor"
+    Range("N4").Select
+    ActiveCell.FormulaR1C1 = "Y coor"
+    Range("O4").Select
+    ActiveCell.FormulaR1C1 = "Z coor"
+    Range("P4").Select
+    ActiveCell.FormulaR1C1 = "Tissue"
+    Range("A3:G3").Select
+    With Selection
+        .HorizontalAlignment = xlGeneral
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = True
+    End With
+    Range("H3").Select
+    ActiveCell.FormulaR1C1 = "ALL"
+    Range("I3").Select
+    ActiveCell.FormulaR1C1 = "Right Hemisphere"
+    Range("I3:O3").Select
+    With Selection
+        .HorizontalAlignment = xlGeneral
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = True
+    End With
+    Range("A3:P4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    Range("A3:O4").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Range("H3").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 255
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Range("A3:O4").Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideVertical)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideHorizontal)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Range("P4").Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideVertical)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideHorizontal)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 65535
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Rows("3:4").Select
+    Selection.Copy
+    Range("A7").Select
+    ActiveSheet.Paste
+    Range("A11").Select
+    ActiveSheet.Paste
+    Range("A15").Select
+    ActiveSheet.Paste
+    Range("A1").Select
+
+Dim ZSpace As Worksheet
+Const ZSheetName As String = "Analysis-Overview Z-2.98"
+
+Set ZSpace = Nothing
+On Error Resume Next
+Set ZSpace = ActiveWorkbook.Worksheets(ZSheetName)
+On Error GoTo 0
+
+    If ZSpace Is Nothing Then
+        Worksheets.Add.Name = ZSheetName
+    End If
+    
+    Sheets.Add After:=Sheets(Sheets.Count)
+    Sheets("Analysis-Overview Z-2.98").Select
+    Sheets("Analysis-Overview Z-2.98").Name = "Analysis-Overview Z-2.98"
+    Sheets("Analysis-Overview Z-2.98").Select
+    Sheets("Analysis-Overview Z-2.98").Move Before:=Sheets(1)
+    
+    Sheets("Analysis-Overview ALL").Select
+    Range("A3:P4").Select
+    Application.CutCopyMode = False
+    Selection.Copy
+    Sheets("Analysis-Overview Z-2.98").Select
+    Range("A3").Select
+    ActiveSheet.Paste
+    Range("A4:P4").Select
+    Application.CutCopyMode = False
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 5287936
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Range("A3:G3").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 5287936
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Range("I3:O3").Select
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 5287936
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Range("H3").Select
+    ActiveCell.FormulaR1C1 = "Z > 2.98"
+    Range("A3:P4").Select
+    Selection.Font.Bold = True
+    Selection.Copy
+    Range("A7").Select
+    ActiveSheet.Paste
+    Range("A11").Select
+    ActiveSheet.Paste
+    Range("A15").Select
+    ActiveSheet.Paste
+    Range("A1").Select
+    Sheets("Analysis-Overview ALL").Select
+    Selection.Font.Bold = True
+    Range("A7:P8").Select
+    Selection.Font.Bold = True
+    Range("A11:P12").Select
+    Selection.Font.Bold = True
+    Range("A15:P16").Select
+    Selection.Font.Bold = True
+    Range("A1").Select
+End Sub

@@ -1,0 +1,116 @@
+Sub PreSort()
+'
+' PreSort Macro
+    Dim strSheetName As String
+    strSheetName = ActiveSheet.Name
+    Range("S2").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Range(Selection, Selection.End(xlToLeft)).Select
+    Selection.Copy
+    Range("A2").Select
+    Sheets.Add.Name = "workspace"
+    Sheets("workspace").Select
+    ActiveSheet.Paste
+    Application.CutCopyMode = False
+    ActiveWorkbook.Worksheets("workspace").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("workspace").Sort.SortFields.Add Key:=Range( _
+        "K:K"), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+        xlSortNormal
+    With ActiveWorkbook.Worksheets("workspace").Sort
+        .SetRange Range("A:S")
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    
+Dim i, numD, numA
+Dim wsSpace As Worksheet
+Dim LastRow As Long
+Dim usedRows As Long
+    
+    Set wsSpace = Worksheets("workspace")
+    LastRow = Cells(Rows.Count, "A").End(xlUp).Row
+    usedRows = ActiveSheet.UsedRange.Rows.Count
+    
+    For i = 2 To LastRow
+        numD = wsSpace.Cells(i, "D").Value
+        numA = wsSpace.Cells(i, "A").Value
+        If IsEmpty(numA) = False Then
+            If numA <= 0.05 Then
+                Cells(i, "A").Select
+                Range(Selection, Selection.End(xlDown).End(xlToRight).Offset(-1, 0)).Select
+                With Selection.Interior
+                    .Pattern = xlSolid
+                    .PatternColorIndex = xlAutomatic
+                    .ThemeColor = xlThemeColorAccent2
+                    .TintAndShade = 0.399975585192419
+                    .PatternTintAndShade = 0
+                End With
+                Cells(i, "C").Select
+                Selection.Copy
+                Range(Selection, Selection.End(xlDown).Offset(-1, 0)).Select
+                ActiveSheet.Paste
+            
+            ElseIf numD <= 0.05 Then
+                Cells(i, "A").Select
+                Range(Selection, Selection.End(xlDown).End(xlToRight).Offset(-1, 0)).Select
+                With Selection.Interior
+                    .Pattern = xlSolid
+                    .PatternColorIndex = xlAutomatic
+                    .ThemeColor = xlThemeColorLight2
+                    .TintAndShade = 0.599993896298105
+                    .PatternTintAndShade = 0
+                End With
+                Cells(i, "C").Select
+                Selection.Copy
+                Range(Selection, Selection.End(xlDown).Offset(-1, 0)).Select
+                ActiveSheet.Paste
+            Else
+                Cells(i, "C").Select
+                Selection.Copy
+                Range(Selection, Selection.End(xlDown).Offset(-1, 0)).Select
+                ActiveSheet.Paste
+            End If
+        End If
+    Next i
+
+    Range("A1").Select
+    Selection.End(xlToRight).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Range(Selection, Selection.End(xlToLeft)).Select
+    ActiveWorkbook.Worksheets("workspace").Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("workspace").Sort.SortFields.Add Key:=Range( _
+        "O:O"), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+        xlSortNormal
+    ActiveWorkbook.Worksheets("workspace").Sort.SortFields.Add Key:=Range( _
+        "P:P"), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+        xlSortNormal
+    ActiveWorkbook.Worksheets("workspace").Sort.SortFields.Add Key:=Range( _
+        "Q:Q"), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+        xlSortNormal
+    With ActiveWorkbook.Worksheets("workspace").Sort
+        .SetRange Range("A:S")
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    Selection.Cut
+    Sheets(strSheetName).Select
+    ActiveSheet.Paste
+    
+    Cells.Select
+    Cells.EntireColumn.AutoFit
+    Range("A2").Select
+    Selection.End(xlToRight).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Range(Selection, Selection.End(xlToLeft)).Select
+    
+    Application.DisplayAlerts = False
+    Sheets("workspace").Select
+    ActiveWindow.SelectedSheets.Delete
+    
+End Sub
